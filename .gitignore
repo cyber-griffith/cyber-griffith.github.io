@@ -1,0 +1,4 @@
+# Local tooling. This repo is served as-is by GitHub Pages (.nojekyll), so
+# anything committed here is published at the site's URL.
+.impeccable/
+.claude/

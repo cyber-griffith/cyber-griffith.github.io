@@ -1,74 +1,71 @@
 # Portfolio — Jace Griffith
 
-Source for my portfolio site. AI security and automation engineer; active Secret
-clearance; U.S. Navy veteran.
+Source for my portfolio site. Agentic AI and automation engineer with an AI and agent
+security background; active Secret clearance; U.S. Navy veteran.
 
 **Live:** [cyber-griffith.github.io](https://cyber-griffith.github.io/)
 
 ---
 
-## The one rule
+## The idea
 
-Every quantitative claim on the page carries its source inline, linked to the exact
-committed file that produced it. Click a figure's tag and you get the verbatim lines
-from the artifact, plus a link to it on GitHub.
+The site is a game. The first screen is a title screen, and under it is **the block**:
+a pixel-art neon street at night that you skate along. Every building is a part of the
+site.
 
-Provenance is marked in one of three states, and the page never blurs them together:
-
-| State | Meaning |
+| Place | Leads to |
 | --- | --- |
-| **committed** | Links to a result file in a public repo. Check it yourself. |
-| **reproduce** | The run artifact is deliberately not committed (it embeds corpus text). The exact command that regenerates it is shown instead, and the eval corpora it ran against *are* committed. |
-| **internal** | Employer work. No public artifact exists, and none is implied. |
+| The Dock | Story mode |
+| Agent Lab | Defend the agent (a mini-game) |
+| Workshop | The loadout |
+| Boss Arena | Three public projects, each with its weak spot |
+| Trophy Hall | Certifications |
+| The Stage, The Bowl, Arcade | Off the clock: music, sports, gaming |
+| Player 2 | Contact |
 
-The point of separating them is that the third state exists at all. A page that
-presents unverifiable internal figures the same way it presents linked ones devalues
-the linked ones.
+Click the street to skate there, drag to look around, arrow keys to ride, Enter to go in.
 
-## Projects referenced
+## Defend the agent
 
-| Project | Repo | Headline artifact |
-| --- | --- | --- |
-| Prompt Shield | [prompt-shield](https://github.com/cyber-griffith/prompt-shield) | `eval/attacks_test.jsonl`, `eval/benign_test.jsonl` |
-| Security Intelligence RAG | [security-intel-rag](https://github.com/cyber-griffith/security-intel-rag) | `data/manifest.json`, `experiments/results/` |
-| Red Team Attack Simulator | [red-team-simulator](https://github.com/cyber-griffith/red-team-simulator) | `results/attack_log.jsonl` |
+Requests and attacks ride a track through three defenses to an AI agent. Run the cursor
+over an attack to eat it, or switch a defense on. The odds on each defense are real
+measurements from my public projects:
+[Prompt Shield](https://github.com/cyber-griffith/prompt-shield) for the rules and the
+judge, and the [red-team attack log](https://github.com/cyber-griffith/red-team-simulator)
+for the guardrails.
+
+## Things to find
+
+Eight achievements, eight gems scattered down the page, an XP bar, and a cheat code.
+The cursor is a pixel pointer with a bot that tags along; it can be switched off in the
+achievements menu.
+
+## Adding sports and genres
+
+Everything in "Off the clock" comes from **`me.js`**. Add a line, save, commit and push:
+
+```js
+sports: [ "Basketball", "Hockey", "Lacrosse", ],
+genres: [ { name: "Dubstep", feel: "bass" }, ],
+```
+
+`feel` sets how the equaliser moves: `heavy`, `bass`, `bounce`, `chill` or `wild`.
 
 ## Build
 
-There is no build step, no framework, no dependencies, and no third-party requests
-of any kind — fonts included.
+No build step, no framework, no dependencies, no image assets beyond the profile photo,
+and no third-party requests.
 
 ```text
-index.html      structure and content, including every provenance excerpt
-styles.css      design tokens, layout, light/dark themes, aurora, motion
-app.js          progressive enhancement only — the page works fully without it
-field-data.js   1,824 attack outcomes, generated from attack_log.jsonl
-fonts/          Bricolage Grotesque, Archivo, IBM Plex Mono — latin subset, woff2
+index.html      structure and content
+styles.css      theme, layout, motion
+me.js           the lists you can edit (sports, genres)
+pix.js          hand-drawn pixel lettering and icons
+world.js        the block: the street, its buildings and the skater
+app.js          the game, loadout, achievements, XP, cursor, attack grid
+field-data.js   1,824 attack outcomes, generated from the public attack log
+fonts/          Bricolage Grotesque, Archivo, IBM Plex Mono
 ```
-
-## The attack field
-
-The block under the hero is not an illustration. It is one mark per line of
-`results/attack_log.jsonl` — 1,824 executions in run order grouped by target,
-with the 78 the judge scored as successful lit. Hover any mark for its technique
-ID, name, severity, target and verdict; "replay the run" redraws the sweep.
-
-`field-data.js` is generated from the log: technique index, target index and
-outcome packed into four characters per attack, plus a lookup table of the 40
-techniques. 10 KB for the whole run.
-
-Dark is the default theme — the design is built out of glow against a night
-ground, and light is the alternate. The toggle in the masthead writes an explicit
-choice to `localStorage`, applied before first paint.
-
-Type is Bricolage Grotesque for display, Archivo for text, IBM Plex Mono for data
-and identifiers. The woff2 files are committed rather than loaded from a CDN, so
-the page makes no request to any host but its own.
-
-The background is three soft radial fields drifting behind the content, built from
-gradients rather than blurred elements — a blur filter at that size is expensive to
-composite, and a wide gradient falloff is already soft. It stops entirely under
-`prefers-reduced-motion`.
 
 Run it locally with any static server:
 
@@ -76,19 +73,13 @@ Run it locally with any static server:
 python -m http.server 8000
 ```
 
-The provenance drawers are native `<details>` elements, so they open, close, and
-respond to the keyboard with JavaScript disabled. `app.js` only adds
-one-drawer-at-a-time behaviour, Escape-to-close, and nav highlighting.
+## Quality floor
 
-## Accessibility and quality floor
-
-- Responsive to 360px with no horizontal scrolling; wide content scrolls inside its
-  own container
-- Visible keyboard focus on every interactive element, plus a skip link
-- `prefers-reduced-motion` respected — the aurora holds still
-- `prefers-color-scheme` light and dark, both with real contrast ratios
-- Charts are hand-authored inline SVG with `<title>`/`<desc>`; every figure's numbers
-  also appear as text in its caption
+- Reads top to bottom with JavaScript disabled; the list under the street links to
+  every part
+- Responsive to 360px with no horizontal page scroll
+- Keyboard focus on every control, arrow keys in the selector groups, a skip link
+- `prefers-reduced-motion` respected: the street, game and equaliser hold still
 
 ## Contact
 

@@ -3,79 +3,80 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Jace Griffith — AI Security &amp; Automation Engineer</title>
-<meta name="description" content="AI security and automation engineer. LLM injection detection, CVE retrieval, and red-team tooling — with the test sets and result files behind every figure.">
-<meta name="color-scheme" content="light dark">
+<title>Jace Griffith — Agentic AI &amp; Automation Engineer</title>
+<meta name="description" content="Jace Griffith builds AI agents, automates the work around them, and tests how AI systems fail so they ship safer. Active Secret clearance, U.S. Navy veteran.">
+<meta name="color-scheme" content="dark">
+<meta name="theme-color" content="#07071a">
 <link rel="preload" href="fonts/bricolage-grotesque-400-800.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="fonts/archivo-400-700.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="preload" href="fonts/ibm-plex-mono-400.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="styles.css?v=9">
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%23e8e9e3'/%3E%3Cpath d='M4 24 L12 14 L18 19 L28 7' stroke='%23b83719' stroke-width='3' fill='none' stroke-linejoin='round' stroke-linecap='round'/%3E%3C/svg%3E">
-<meta property="og:title" content="Jace Griffith — AI Security &amp; Automation Engineer">
-<meta property="og:description" content="Every figure on the page links to the artifact that produced it.">
+<link rel="stylesheet" href="styles.css?v=54">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 12' shape-rendering='crispEdges'%3E%3Crect width='12' height='12' fill='%2307071a'/%3E%3Cpath d='M4 0h1v2H4zM7 0h1v2H7zM2 2h8v1H2zM1 3h1v6H1zM10 3h1v6h-1zM3 4h2v2H3zM7 4h2v2H7zM4 7h4v1H4zM2 9h8v1H2z' fill='%2335c8ff'/%3E%3C/svg%3E">
+<meta property="og:title" content="Jace Griffith — Agentic AI &amp; Automation Engineer">
+<meta property="og:description" content="Skate the block, defend an AI agent, find the cheat code.">
 <meta property="og:type" content="profile">
-<script>
-/* Apply a stored theme choice before first paint, so the page never flashes
-   the wrong one. Kept inline and tiny for that reason. */
-try {
-  var t = localStorage.getItem('theme');
-  if (t === 'dark' || t === 'light') document.documentElement.setAttribute('data-theme', t);
-} catch (e) {}
-</script>
+<noscript><style>.reading [data-pos]{display:inline !important}.reading [data-pos]+[data-pos]::before{content:" → "}.hud__xp,.ach,.pad,.pad__dots,.pad__msg,.block__view,.game{display:none}</style></noscript>
 </head>
 <body>
 
-<canvas class="net" id="net" aria-hidden="true"></canvas>
-<div class="progress" id="progress" aria-hidden="true"></div>
-
 <a class="skip" href="#main">Skip to content</a>
 
-<header class="masthead">
-  <div class="shell masthead__bar">
-    <a class="masthead__name" href="#top">Jace Griffith <span>AI SECURITY &amp; AUTOMATION</span></a>
-    <nav class="masthead__nav" aria-label="Sections">
-      <a href="#projects">projects</a>
-      <a href="#current">current</a>
-      <a href="#background">background</a>
-      <a href="#contact">contact</a>
+<header class="bar">
+  <div class="bar__in">
+    <a class="bar__name" href="#top">Jace Griffith</a>
+    <nav class="bar__nav" aria-label="Sections">
+      <a href="#play">Play</a>
+      <a href="#loadout">Loadout</a>
+      <a href="#bosses">Bosses</a>
+      <a href="#story">Story</a>
+      <a href="#offclock">Off the clock</a>
+      <a href="#contact">Contact</a>
     </nav>
-    <button class="theme" id="themeToggle" type="button" aria-label="Switch colour theme" title="Switch colour theme">
-      <svg viewBox="0 0 24 24" aria-hidden="true">
-        <circle cx="12" cy="12" r="9.5" fill="none" stroke="currentColor" stroke-width="1.6"/>
-        <path d="M12 2.5a9.5 9.5 0 0 1 0 19z" fill="currentColor"/>
-      </svg>
-    </button>
+    <div class="hud__xp" id="xp" title="XP: eat attacks, grab gems, unlock achievements">
+      <b id="xpLv">LV 1</b><span><i id="xpFill"></i></span>
+    </div>
+    <div class="ach" id="ach">
+      <button class="ach__btn" id="achBtn" type="button" aria-expanded="false" aria-controls="achList" aria-label="Achievements">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 3h12v2h3v3a4 4 0 0 1-4 4h-.4A6 6 0 0 1 13 14.9V18h3v3H8v-3h3v-3.1A6 6 0 0 1 7.4 12H7a4 4 0 0 1-4-4V5h3zm0 4H5v1a2 2 0 0 0 1 1.7zm12 0v2.7A2 2 0 0 0 19 8V7z"/></svg>
+        <b id="achCount">0/8</b>
+      </button>
+      <div class="ach__list" id="achList" hidden>
+        <ul>
+          <li data-ach="explorer"><b>Local</b><span>Visit every spot on the block</span></li>
+          <li data-ach="eater"><b>Bug eater</b><span>Eat an attack with your cursor</span></li>
+          <li data-ach="hard"><b>Hard mode</b><span>Switch every defense off</span></li>
+          <li data-ach="inspect"><b>Gearhead</b><span>Inspect something in the loadout</span></li>
+          <li data-ach="red"><b>Red teamer</b><span>Filter the attack log</span></li>
+          <li data-ach="dj"><b>DJ</b><span>Change the genre</span></li>
+          <li data-ach="loot"><b>Loot goblin</b><span>Grab every gem on the page</span></li>
+          <li data-ach="cheat"><b>Cheat code</b><span>You'll know it when you see the controller</span></li>
+        </ul>
+        <button class="ach__cur" id="curToggle" type="button" aria-pressed="true">Sprite cursor: on</button>
+      </div>
+    </div>
   </div>
 </header>
 
 <main id="main">
 
-<!-- ══ HERO ══════════════════════════════════════════════════════════════ -->
-<section class="shell hero" id="top">
-  <div class="hero__grid">
-
-    <div class="hero__intro">
-      <p class="hero__eyebrow">AI Security &amp; Automation Engineer</p>
-      <h1 class="hero__name">Jace&nbsp;Griffith</h1>
-      <p class="hero__line">
-        I build LLM security systems — and <b>publish the tests</b> that say whether
-        they actually work.
+<!-- ══ TITLE SCREEN + THE BLOCK ════════════════════════════════════════════ -->
+<section class="title" id="top">
+  <div class="title__in">
+    <div class="title__copy">
+      <h1 class="logo" data-pix>Jace Griffith</h1>
+      <p class="title__role">Agentic AI &amp; Automation Engineer</p>
+      <p class="title__lead">
+        I build AI agents, automate the work around them, and test how AI systems fail
+        so they ship safer.
       </p>
-
-      <p class="hero__meta">
-        <span>Active Secret clearance</span> <i>/</i>
-        <span>U.S. Navy veteran</span> <i>/</i>
-        <span>Uncasville, Connecticut</span>
-      </p>
-
-      <div class="hero__links">
-        <a class="btn btn--primary" href="mailto:cybergriffith@gmail.com">
+      <div class="title__row">
+        <a class="btn btn--start" href="#play"><span data-pix>Press start</span></a>
+        <a class="btn" href="mailto:cybergriffith@gmail.com">
           <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 4H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2zm0 4-8 5-8-5V6l8 5 8-5z"/></svg>
-          cybergriffith@gmail.com
+          Email
         </a>
         <a class="btn" href="https://github.com/cyber-griffith" target="_blank" rel="noopener">
           <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 .5a12 12 0 0 0-3.8 23.4c.6.1.8-.3.8-.6v-2c-3.3.7-4-1.6-4-1.6-.6-1.4-1.4-1.8-1.4-1.8-1.1-.7 0-.7 0-.7 1.2.1 1.9 1.3 1.9 1.3 1.1 1.9 2.9 1.3 3.6 1 .1-.8.4-1.3.8-1.6-2.7-.3-5.5-1.3-5.5-5.9 0-1.3.5-2.4 1.2-3.2-.1-.3-.5-1.5.1-3.2 0 0 1-.3 3.3 1.2a11.5 11.5 0 0 1 6 0C17.3 4.7 18.3 5 18.3 5c.6 1.7.2 2.9.1 3.2.8.8 1.2 1.9 1.2 3.2 0 4.6-2.8 5.6-5.5 5.9.4.4.8 1.1.8 2.2v3.3c0 .3.2.7.8.6A12 12 0 0 0 12 .5z"/></svg>
-          github.com/cyber-griffith
+          GitHub
         </a>
         <a class="btn" href="https://www.linkedin.com/in/jace-griffith-jg11/" target="_blank" rel="noopener">
           <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4.98 3.5a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5zM2.4 9h5.2v12H2.4zM9.6 9h5v1.6h.1c.7-1.2 2.3-2 4.2-2 4.1 0 4.9 2.5 4.9 5.9V21h-5.2v-5.3c0-1.3 0-3-1.9-3s-2.1 1.4-2.1 2.9V21H9.6z"/></svg>
@@ -84,989 +85,533 @@ try {
       </div>
     </div>
 
-    <div class="stage" id="stage">
-      <span class="stage__halo" aria-hidden="true"></span>
-
-      <div class="avatar-wrap">
-        <span class="avatar__ring" aria-hidden="true"></span>
-        <figure class="avatar">
-          <img src="profile.jpg" alt="Jace Griffith" width="400" height="400">
-          <span class="avatar__duo" aria-hidden="true"></span>
-        </figure>
-      </div>
-
-      <div class="stage__chips">
-        <a class="chip chip--1" data-depth="2.6" href="https://github.com/cyber-griffith/security-intel-rag/blob/master/data/manifest.json" target="_blank" rel="noopener">
-          <span class="chip__v">358,170</span>
-          <span class="chip__k">CVE records indexed</span>
-        </a>
-        <a class="chip chip--2" data-depth="-2.1" href="https://github.com/cyber-griffith/red-team-simulator/blob/main/results/attack_log.jsonl" target="_blank" rel="noopener">
-          <span class="chip__v">1,824</span>
-          <span class="chip__k">attack executions logged</span>
-        </a>
-        <a class="chip chip--3" data-depth="1.7" href="https://github.com/cyber-griffith/security-intel-rag/blob/master/experiments/results/config_decision.json" target="_blank" rel="noopener">
-          <span class="chip__v">141 / 142</span>
-          <span class="chip__k">answers grounded</span>
-        </a>
-        <a class="chip chip--4" data-depth="-2.9" href="https://github.com/cyber-griffith/red-team-simulator/blob/main/attack_taxonomy.py" target="_blank" rel="noopener">
-          <span class="chip__v">40</span>
-          <span class="chip__k">technique taxonomy</span>
-        </a>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ══ PROOF ═════════════════════════════════════════════════════════════ -->
-<section class="shell proof">
-  <div class="proof__grid">
-    <div>
-      <div class="hero__lead">
-        A retrieval system I built answered <strong>142 held-out questions</strong> with
-        <strong>141 grounded</strong> in the evidence they cited.<details class="prov">
-          <summary>config_decision.json</summary>
-          <div class="prov__panel">
-            <div class="prov__head">
-              <span>security-intel-rag / experiments/results/config_decision.json</span>
-              <a href="https://github.com/cyber-griffith/security-intel-rag/blob/master/experiments/results/config_decision.json" target="_blank" rel="noopener">open on GitHub ↗</a>
-            </div>
-<pre class="prov__code">"questions":  <b>142</b>,
-"a_grounded": <b>141</b>,
-"b_grounded": 142,</pre>
-          </div>
-        </details>
-        On <strong>22%</strong> of those same 142 questions, it never retrieved the CVE the
-        question was about.<details class="prov">
-          <summary>config_decision.json</summary>
-          <div class="prov__panel">
-            <div class="prov__head">
-              <span>security-intel-rag / experiments/results/config_decision.json</span>
-              <a href="https://github.com/cyber-griffith/security-intel-rag/blob/master/experiments/results/config_decision.json" target="_blank" rel="noopener">open on GitHub ↗</a>
-            </div>
-<pre class="prov__code">"post_hoc_target_hit": {
-  "questions": <b>142</b>,
-  "a_target_retrieved": <b>111</b>,
-  "b_target_retrieved": 108,
-  "p_value": 0.6291
-}</pre>
-            <p class="prov__say">111 of 142 — the target CVE reached the context 78% of the
-            time. The remaining 22% is the failure this page does not hide.</p>
-          </div>
-        </details>
-        Both numbers come out of one file, over one set of questions, and both link to it.
-      </div>
-    </div>
-
-    <!-- readout: establishes the provenance rule inside the first screen -->
-    <aside class="readout rgb hud" aria-label="Selected measurements">
-      <div class="readout__head">
-        <span>Selected measurements</span>
-        <span>2026</span>
-      </div>
-
-      <div class="readout__rows">
-
-        <div class="readout__row">
-          <span class="readout__val">358,170</span>
-          <div class="readout__lbl">NVD CVE records indexed, 1999–2026, ingested against verified feed hashes<details class="prov">
-              <summary>manifest.json</summary>
-              <div class="prov__panel">
-                <div class="prov__head">
-                  <span>security-intel-rag / data/manifest.json</span>
-                  <a href="https://github.com/cyber-griffith/security-intel-rag/blob/master/data/manifest.json" target="_blank" rel="noopener">open ↗</a>
-                </div>
-<pre class="prov__code">"corpus": {
-  "source": "fkie-cad/nvd-json-data-feeds",
-  "records_raw": 376092,
-  "records_indexable": <b>358170</b>,
-  "records_filtered_out": 17922,
-  "release_tag": "v2026.08.12-000016",
-  "pulled_at": "2026-08-12T19:52:47+00:00"
-}</pre>
-              </div>
-            </details>
-          </div>
-        </div>
-
-        <div class="readout__row">
-          <span class="readout__val">1,824</span>
-          <div class="readout__lbl">Logged attack executions across 7 targets — every verdict committed<details class="prov">
-              <summary>attack_log.jsonl</summary>
-              <div class="prov__panel">
-                <div class="prov__head">
-                  <span>red-team-simulator / results/attack_log.jsonl</span>
-                  <a href="https://github.com/cyber-griffith/red-team-simulator/blob/main/results/attack_log.jsonl" target="_blank" rel="noopener">open ↗</a>
-                </div>
-<pre class="prov__code">$ wc -l results/attack_log.jsonl
-<b>1824</b> results/attack_log.jsonl
-
-# one line per attack: prompt, full response,
-# and the judge verdict that scored it
-{"id": "...", "technique_id": "PI-004",
- "target": "bedrock", "success": false,
- "judge_verdict": {"success": false,
-   "confidence": 0.95, "reasoning": "..."}}</pre>
-              </div>
-            </details>
-          </div>
-        </div>
-
-        <div class="readout__row">
-          <span class="readout__val">12 / 12</span>
-          <div class="readout__lbl">Sabotaged answers caught by the grader, zero false alarms on controls<details class="prov">
-              <summary>&hellip;holdout_hybrid_rerank.json</summary>
-              <div class="prov__panel">
-                <div class="prov__head">
-                  <span>security-intel-rag / experiments/results/answer_quality_holdout_hybrid_rerank.json</span>
-                  <a href="https://github.com/cyber-griffith/security-intel-rag/blob/master/experiments/results/answer_quality_holdout_hybrid_rerank.json" target="_blank" rel="noopener">open ↗</a>
-                </div>
-<pre class="prov__code">"calibration_corrupted": {
-  "graded": 12,
-  "grades": { "unsupported": <b>12</b> },
-  "grounded_rate": 0.0
-},
-"calibration_verbatim": {
-  "graded": 12,
-  "grades": { "grounded": <b>12</b> },
-  "grounded_rate": 1.0
-}</pre>
-                <p class="prov__say">Deliberately corrupted answers are graded alongside
-                the real ones. The judge caught all 12, and flagged none of the 12 clean
-                controls.</p>
-              </div>
-            </details>
-          </div>
-        </div>
-
-      </div>
-
-      <p class="readout__rule">
-        <b>The rule for this page:</b> every figure links to the artifact that produced
-        it. Open any tag to read the source line.
-      </p>
-    </aside>
-
-  </div>
-</section>
-
-<!-- ══ ATTACK FIELD ══════════════════════════════════════════════════════ -->
-<!-- Not decoration: one mark per row of results/attack_log.jsonl. -->
-<section class="shell field" aria-labelledby="field-h">
-  <div class="field__head">
-    <div>
-      <h2 class="field__h" id="field-h">Every attack in the committed run</h2>
-      <p class="field__sub">One mark per logged execution, grouped by target.</p>
-    </div>
-    <p class="field__stat">
-      <b>1,824</b> executions &nbsp;·&nbsp; <b class="hit">78</b> got through<details class="prov">
-        <summary>attack_log.jsonl</summary>
-        <div class="prov__panel">
-          <div class="prov__head">
-            <span>red-team-simulator / results/attack_log.jsonl</span>
-            <a href="https://github.com/cyber-griffith/red-team-simulator/blob/main/results/attack_log.jsonl" target="_blank" rel="noopener">open on GitHub ↗</a>
-          </div>
-<pre class="prov__code">$ wc -l results/attack_log.jsonl
-<b>1824</b> results/attack_log.jsonl
-
-$ jq -r '.success' results/attack_log.jsonl \
-    | sort | uniq -c
-   1746 false
-     <b>78</b> true</pre>
-          <p class="prov__say">The marks above are that file, in order, one per line —
-          not an illustration of it. Bright marks are the 78 attacks the judge scored as
-          successful.</p>
-        </div>
-      </details>
-    </p>
-  </div>
-  <div class="field__wrap">
-    <canvas id="attackField" class="field__canvas rgb" role="img"
-      aria-label="A field of 1,824 marks, one per logged attack execution. 78 bright marks are the attacks that succeeded; the remaining 1,746 are blocked."></canvas>
-    <div class="field__tip" id="fieldTip" role="status" aria-live="polite"></div>
-  </div>
-  <div class="field__controls">
-    <button class="replay" id="fieldReplay" type="button">
-      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5V1L7 6l5 5V7a6 6 0 1 1-6 6H4a8 8 0 1 0 8-8z"/></svg>
-      replay the run
-    </button>
-    <span>hover any mark for its technique and verdict</span>
-  </div>
-</section>
-
-<!-- ══ PROJECTS ══════════════════════════════════════════════════════════ -->
-<section class="shell section" id="projects">
-  <div class="section__head">
-    <span class="section__idx">01</span>
-    <h2 class="section__title">Selected projects</h2>
-    <span class="section__note">measured result &middot; known failure mode &middot; source</span>
-  </div>
-
-  <!-- ── 01 Prompt Shield ─────────────────────────────────────────────── -->
-  <article class="proj">
-    <div class="proj__head">
-      <span class="proj__idx">01</span>
-      <h3 class="proj__name">Prompt Shield</h3>
-      <a class="proj__repo" href="https://github.com/cyber-griffith/prompt-shield" target="_blank" rel="noopener">cyber-griffith/prompt-shield ↗</a>
-      <p class="proj__kind">Tiered prompt-injection detector</p>
-    </div>
-
-    <div class="proj__body">
-      <div class="proj__prose">
-        <div class="p">
-          A deterministic rule layer scores every prompt in under a millisecond and routes
-          anything uncertain to an LLM adjudicator. The design intent was cost: pay for a
-          model call only on the prompts the rules can't settle. At the band that actually
-          ships, that intent does not survive measurement — <span class="q">89.4%</span> of
-          prompts escalate, and the adjudicated path runs <span class="q">1,473 ms</span> at
-          p50 against the rule layer's 0.17 ms. The rule layer is sub-millisecond. The
-          detector is not.
-        </div>
-
-        <div class="p">
-          Measured on a held-out set of <span class="q">500</span> adversarial and
-          <span class="q">334</span> benign prompts.<details class="prov">
-            <summary>eval/*.jsonl</summary>
-            <div class="prov__panel">
-              <div class="prov__head">
-                <span>prompt-shield / eval/attacks_test.jsonl &middot; eval/benign_test.jsonl</span>
-                <a href="https://github.com/cyber-griffith/prompt-shield/tree/main/eval" target="_blank" rel="noopener">open on GitHub ↗</a>
-              </div>
-<pre class="prov__code">$ wc -l eval/attacks_test.jsonl eval/benign_test.jsonl
- <b>500</b> eval/attacks_test.jsonl
- <b>334</b> eval/benign_test.jsonl
-
-# attacks span 40 technique IDs, 6 categories
-# the 334 benign split <b>254</b> ordinary + <b>80</b> hard negatives
-# ordinary/*: coding 50 · knowledge 40 · writing 30
-#   casual 30 · math 25 · data 23
-#   business 20 · translation 18 · summarization 18</pre>
-            </div>
-          </details>
-          The headline is <span class="q">~62% recall at about 4% FPR</span>, stated as a
-          range on purpose. Three runs of an identical configuration measured recall
-          61.6 / 62.6 / 63.2% and FPR 3.9 / 3.9 / 3.3%. Quoting the 63.2% and the 3.3%
-          together would be reporting the single best run as though it were the result;
-          the spread is judge nondeterminism, and ±1 point is the honest tolerance.
-        </div>
-
-        <div class="p">
-          Three things worth more than the headline: zero false positives across the
-          <span class="q">254</span> ordinary prompts; precision <em>rose</em> while recall
-          nearly quadrupled, so the gain wasn't bought with false alarms; and the
-          adjudicator is escalate-only — it can raise a risk score and never lower one,
-          verified against stub judges hardwired to return "benign."
-        </div>
-
-        <dl class="proj__spec">
-          <div><dt>Stack</dt> <dd>&nbsp;Python · deterministic rule engine · LLM adjudicator · FastAPI</dd></div>
-          <div><dt>Corpus</dt> <dd>&nbsp;40 technique IDs · 6 attack categories · 80 hard negatives in the benign set</dd></div>
+    <div class="pcard" id="pcard">
+      <div class="pcard__in">
+        <p class="pcard__tag" data-pix>Player 1</p>
+        <img src="profile.jpg" alt="Jace Griffith" width="400" height="400">
+        <dl>
+          <div><dt>Class</dt><dd>Agentic AI &amp; Automation</dd></div>
+          <div><dt>Spec</dt><dd>AI and agent security</dd></div>
+          <div><dt>Clearance</dt><dd>Active Secret</dd></div>
+          <div><dt>Origin</dt><dd>Cybersecurity</dd></div>
         </dl>
-      </div>
-
-      <div>
-        <div class="tblwrap rgb hud">
-          <table class="data">
-            <caption>Rule layer vs. full pipeline — 834 held-out prompts</caption>
-            <thead>
-              <tr>
-                <th scope="col">Metric</th>
-                <th scope="col" class="col-a">Rule layer</th>
-                <th scope="col" class="col-b">Full pipeline</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr><th scope="row">Recall</th>               <td class="col-a">16.2%</td>  <td class="col-b">61.6 – 63.2%</td></tr>
-              <tr><th scope="row">False-positive rate</th>  <td class="col-a">2.1%</td>   <td class="col-b">3.3 – 3.9%</td></tr>
-              <tr><th scope="row">Precision</th>            <td class="col-a">92.0%</td>  <td class="col-b">96.0 – 96.6%</td></tr>
-              <tr><th scope="row">Escalated to the LLM</th> <td class="col-a">—</td>      <td class="col-b">89.4%</td></tr>
-              <tr><th scope="row">Latency p50</th>          <td class="col-a">0.17 ms</td><td class="col-b">1,473 ms</td></tr>
-              <tr><th scope="row">Latency p95</th>          <td class="col-a">0.81 ms</td><td class="col-b">3,216 ms</td></tr>
-            </tbody>
-            <tfoot>
-              <tr><td colspan="3">
-                Every full-pipeline figure is the spread across three runs of an identical
-                configuration, not a best run. Latency and escalation are from the reported
-                run.
-                <details class="prov">
-                  <summary>README.md</summary>
-                  <div class="prov__panel">
-                    <div class="prov__head">
-                      <span>prompt-shield / README.md</span>
-                      <a href="https://github.com/cyber-griffith/prompt-shield/blob/main/README.md" target="_blank" rel="noopener">open on GitHub ↗</a>
-                    </div>
-<pre class="prov__code">Configuration        Precision  Recall  FPR
-fast path only          92.0%   <b>16.2%</b>  <b>2.1%</b>
-+ adjudication, range   <b>96.0</b>    <b>61.6</b>   <b>3.3</b>
-  over 3 runs           <b>-96.6%</b>  <b>-63.2%</b> <b>-3.9%</b>
-
-"Two of the three runs gave 3.9% FPR, which is
- why the headline says about 4%."
-
-At band <b>0-65</b> it escalates <b>89.4%</b> of all prompts,
-"because a fast-path score of zero is absence of
- evidence rather than evidence of innocence."
-
-p50 0.17 ms → 1473 ms   p95 0.81 ms → 3216 ms</pre>
-                    <p class="prov__say">The raw <code>--out</code> JSON is not committed.
-                    From <code>.gitignore</code>, verbatim: "Regenerated by a documented
-                    command, and they embed corpus text, so they are reproduced rather than
-                    tracked." The eval corpora <em>are</em> committed and linked above.
-                    Regenerate both rows with the commands the README specifies:</p>
-<pre class="prov__code">python benchmark.py \
-  --attacks eval/attacks_test.jsonl \
-  --benign  eval/benign_test.jsonl \
-  --threshold 50 --sweep --out fast_test.json
-
-python benchmark.py \
-  --attacks eval/attacks_test.jsonl \
-  --benign  eval/benign_test.jsonl \
-  --threshold 50 --sweep --adjudicator \
-  <b>--band 0 65</b> --out deep_test.json
-
-python compare_runs.py fast_test.json deep_test.json \
-  --threshold 50</pre>
-                    <p class="prov__say">The floor has to be <code>0</code>, not a positive
-                    number: 263 of the 500 attacks score exactly 0.0 on the fast path, so a
-                    band starting above zero would silently exclude more than half the
-                    attack corpus.</p>
-                  </div>
-                </details>
-              </td></tr>
-            </tfoot>
-          </table>
-        </div>
-
-        <div class="limit">
-          <span class="limit__lbl">Known failure mode</span>
-          <p>
-            81 of 746 adjudications abstained — every single one of them on an attack.
-            Traced to the model provider's own safety layer declining to classify attack
-            text at all. An attacker who can reliably trigger that refusal drops the
-            request back to the rule layer, where recall is 16.2%. The abstention isn't a
-            neutral outcome. It's the bypass.
-          </p>
-        </div>
+        <i class="pcard__shine" aria-hidden="true"></i>
       </div>
     </div>
-  </article>
-
-  <!-- ── 02 Security Intelligence RAG ─────────────────────────────────── -->
-  <article class="proj">
-    <div class="proj__head">
-      <span class="proj__idx">02</span>
-      <h3 class="proj__name">Security Intelligence RAG</h3>
-      <a class="proj__repo" href="https://github.com/cyber-griffith/security-intel-rag" target="_blank" rel="noopener">cyber-griffith/security-intel-rag ↗</a>
-      <p class="proj__kind">Retrieval over the full NVD corpus, with exploitation signal</p>
-    </div>
-
-    <div class="proj__body">
-      <div class="proj__prose">
-        <div class="p">
-          <span class="q">358,170</span> NVD CVE records, 1999 through 2026, ingested
-          reproducibly: verified feed hashes, resumable embedding, incremental refresh,
-          and a committed manifest recording exactly which release was pulled and what got
-          filtered out.<details class="prov">
-            <summary>manifest.json</summary>
-            <div class="prov__panel">
-              <div class="prov__head">
-                <span>security-intel-rag / data/manifest.json</span>
-                <a href="https://github.com/cyber-griffith/security-intel-rag/blob/master/data/manifest.json" target="_blank" rel="noopener">open on GitHub ↗</a>
-              </div>
-<pre class="prov__code">"corpus": {
-  "records_raw": 376092,
-  "records_indexable": <b>358170</b>,
-  "records_filtered_out": 17922,
-  "filter_definitions": {
-    "rejected": "vulnStatus == 'Rejected' (CVE
-                 withdrawn by its assigner)"
-  },
-  "release_tag": "v2026.08.12-000016"
-},
-"exploitation": {
-  "kev":  { "entries": <b>1665</b>,
-            "catalog_version": "2026.08.11" },
-  "epss": { "entries": 358648,
-            "model_version": "v2026.06.15" }
-}</pre>
-            </div>
-          </details>
-          Enriched with CISA KEV and FIRST EPSS, so it answers which vulnerabilities are
-          actually being exploited rather than which ones merely score high.
-        </div>
-
-        <div class="p">
-          Retrieval was chosen by a four-configuration ablation — BM25, dense, hybrid, and
-          hybrid + cross-encoder rerank — on a pinned sample, compared with exact McNemar
-          tests instead of eyeballed averages, under a decision rule written down before
-          the run. The rule fired: hybrid + rerank and BM25 came out
-          <em>statistically equivalent</em> on answer quality, and the preregistered
-          consequence was to flip the default to BM25 on latency grounds.<details class="prov">
-            <summary>config_decision.json</summary>
-            <div class="prov__panel">
-              <div class="prov__head">
-                <span>security-intel-rag / experiments/results/config_decision.json</span>
-                <a href="https://github.com/cyber-griffith/security-intel-rag/blob/master/experiments/results/config_decision.json" target="_blank" rel="noopener">open on GitHub ↗</a>
-              </div>
-<pre class="prov__code">"questions": 142,
-"observed_grade_discordance": 0.007,
-"p_value": 1.0,
-"difference_interval_95": {
-  "difference": -0.007,
-  "low": -0.0208, "high": 0.0067
-},
-"preregistered_delta": 0.1,
-"verdict": <b>"equivalence"</b>,
-"consequence": "the whole interval lies inside
-  +/-10%: the default flips to bm25 on latency
-  grounds",
-"rule": "experiments/PREREGISTRATION.md"</pre>
-              <p class="prov__say">Read <code>consequence</code> carefully: it is the rule's
-              stated consequence, not a record of what happened. What happened is in
-              <a href="https://github.com/cyber-griffith/security-intel-rag/blob/master/experiments/PREREGISTRATION.md" target="_blank" rel="noopener">PREREGISTRATION.md</a>,
-              verbatim: "The default is left unchanged and this paragraph is the record of
-              the rule not being executed as written."</p>
-            </div>
-          </details>
-        </div>
-
-        <div class="p">
-          I declined that consequence, and wrote down why in the same document. The
-          experiment covered <em>one query shape of four</em>. On product + version
-          queries — the shape where the two configurations measurably differ — hybrid +
-          rerank wins R@1 <span class="q">0.306</span> to <span class="q">0.235</span> at
-          p&nbsp;=&nbsp;0.0125. Executing the rule would have traded a significant 7-point
-          loss on a shape the experiment never tested for 12.5% latency.<details class="prov">
-            <summary>identifier_queries_*.json</summary>
-            <div class="prov__panel">
-              <div class="prov__head">
-                <span>security-intel-rag / experiments/results/identifier_queries_{hybrid_rerank,bm25}.json · identifier_paired_tests.json</span>
-                <a href="https://github.com/cyber-griffith/security-intel-rag/tree/master/experiments/results" target="_blank" rel="noopener">open on GitHub ↗</a>
-              </div>
-<pre class="prov__code">product + version         hybrid_rerank    bm25
-  queries                          196     196
-  recall_at_1                   <b>0.3061</b>  <b>0.2347</b>
-  recall_at_10                  0.6327  0.5153
-
-exact McNemar, hybrid_rerank vs bm25, R@1:
-  product + version    a_wins 21  b_wins 7
-                       p = <b>0.0125</b>  significant
-  bare CVE ID          p = 0.0703  not significant
-  description sentence p = 0.7905  not significant</pre>
-              <p class="prov__say">A preregistered rule is only binding over what it
-              measured. Recording the override beats both silently ignoring the rule and
-              following it off a cliff.</p>
-            </div>
-          </details>
-        </div>
-
-        <div class="p">
-          A prompt defect cut unsupported claims from <span class="q">31.2%</span> to
-          <span class="q">0.7%</span> — one unsupported answer in 143, and that 0.7% was
-          measured on held-out questions the fix had never seen, which is the only version
-          of that claim worth making. The denominator is 143 here and 142 above because the
-          figure above is <em>paired</em>: it counts only the questions both retrieval
-          configurations answered, where this one counts every answer the holdout run
-          graded.<details class="prov">
-            <summary>answer_quality_prompt_v1.json</summary>
-            <div class="prov__panel">
-              <div class="prov__head">
-                <span>security-intel-rag / experiments/results/answer_quality_prompt_v1.json</span>
-                <a href="https://github.com/cyber-griffith/security-intel-rag/blob/master/experiments/results/answer_quality_prompt_v1.json" target="_blank" rel="noopener">open on GitHub ↗</a>
-              </div>
-<pre class="prov__code">// before — answer_quality_prompt_v1.json
-"grades": { "grounded": 11, "unsupported": 5 },
-"grounded_rate":    0.6875,
-"unsupported_rate": <b>0.3125</b>
-
-// after, on held-out questions —
-// answer_quality_holdout_hybrid_rerank.json
-"answers": 143, "graded": 143,
-"grades": { "grounded": 142, "unsupported": 1 },
-"grounded_rate":    <b>0.993</b>,
-"unsupported_rate": <b>0.007</b>,
-"answers_with_an_invented_cve": <b>0</b>,
-"citation_validity": 1.0,
-"false_abstentions": <b>0</b>
-
-"held_out_from": [
-  ".../answer_quality_prompt_v2.json",
-  ".../answer_quality_prompt_v1.json"
-]</pre>
-              <p class="prov__say">The v1 run graded 16 answerable questions — treat 31.2%
-              as a small-sample starting point, not a precise baseline.</p>
-            </div>
-          </details>
-          Across those 143 answers, none cited a CVE ID that doesn't exist and none falsely
-          refused a question it could have answered. The grader itself is calibrated rather
-          than trusted: deliberately corrupted answers get graded alongside the real ones,
-          and it caught 12 of 12 while flagging none of the 12 clean controls.
-        </div>
-
-        <dl class="proj__spec">
-          <div><dt>Stack</dt> <dd>&nbsp;Python · SQLite FTS5 BM25 · dense embeddings · cross-encoder rerank</dd></div>
-          <div><dt>Method</dt> <dd>&nbsp;preregistered decision rule · exact McNemar · calibrated LLM judge</dd></div>
-        </dl>
-      </div>
-
-      <div>
-        <figure class="figure rgb hud">
-          <figcaption class="figure__head">Fig. 1 — Grounded is not the same as correct</figcaption>
-          <div class="figure__body">
-            <div class="bars">
-
-              <div class="bar">
-                <div class="bar__top">
-                  <span class="bar__lbl">Answers grounded in the evidence they cited</span>
-                  <span class="bar__val" style="color:var(--steel)">99.3%</span>
-                </div>
-                <div class="bar__track">
-                  <span class="bar__fill bar__fill--full" style="width:99.3%"></span>
-                </div>
-                <p class="bar__note">141 of 142 questions</p>
-              </div>
-
-              <div class="bar">
-                <div class="bar__top">
-                  <span class="bar__lbl">Questions where the target CVE was actually retrieved</span>
-                  <span class="bar__val" style="color:var(--signal)">78.2%</span>
-                </div>
-                <div class="bar__track">
-                  <span class="bar__fill bar__fill--part" style="width:78.2%"></span>
-                  <span class="bar__gap" style="left:78.2%; right:0.7%"></span>
-                </div>
-                <p class="bar__note">111 of the same 142 questions · the hatched span is the gap</p>
-              </div>
-
-            </div>
-          </div>
-          <figcaption>
-            Both bars cover the same 142 paired questions, from
-            <code>config_decision.json</code>. Groundedness measures whether an answer is
-            faithful to the documents it was handed. It says nothing about whether those
-            were the right documents.
-          </figcaption>
-        </figure>
-
-        <div class="limit">
-          <span class="limit__lbl">Known failure mode</span>
-          <p>
-            Those two bars are the limitation. Across the same 142 questions, 99.3% of
-            answers were grounded while the target CVE was retrieved for only 78% — so the
-            system can return a faithful, correctly-cited, confidently-worded answer about
-            the wrong vulnerability. High
-            groundedness on a bad retrieval is more dangerous than a visible refusal,
-            because nothing about the output looks wrong.
-          </p>
-        </div>
-      </div>
-    </div>
-  </article>
-
-  <!-- ── 03 Red Team Attack Simulator ─────────────────────────────────── -->
-  <article class="proj">
-    <div class="proj__head">
-      <span class="proj__idx">03</span>
-      <h3 class="proj__name">Red Team Attack Simulator</h3>
-      <a class="proj__repo" href="https://github.com/cyber-griffith/red-team-simulator" target="_blank" rel="noopener">cyber-griffith/red-team-simulator ↗</a>
-      <p class="proj__kind">Multi-agent LLM red-teaming harness, run in CI</p>
-    </div>
-
-    <div class="proj__body">
-      <div class="proj__prose">
-        <div class="p">
-          It profiles a target model, generates adversarial prompts from a
-          <span class="q">40-technique</span> taxonomy, escalates over multiple turns under
-          five APT personas — APT28, APT29, Lazarus Group, Volt Typhoon, Scattered Spider —
-          and routes every result past an independent LLM judge before it's allowed to
-          count as a finding. Techniques carry OWASP LLM Top 10 (2025) and MITRE ATLAS IDs
-          on the technique record itself, so coverage is queryable rather than
-          asserted.<details class="prov">
-            <summary>attack_taxonomy.py</summary>
-            <div class="prov__panel">
-              <div class="prov__head">
-                <span>red-team-simulator / attack_taxonomy.py</span>
-                <a href="https://github.com/cyber-griffith/red-team-simulator/blob/main/attack_taxonomy.py" target="_blank" rel="noopener">open on GitHub ↗</a>
-              </div>
-<pre class="prov__code">"PI-004": AttackTechnique(
-    id="PI-004",
-    name="Indirect Prompt Injection",
-    category=AttackCategory.PROMPT_INJECTION,
-    severity=Severity.CRITICAL,
-    owasp=<b>"LLM01:2025"</b>,
-    mitre_atlas=<b>["AML.T0051", "AML.T0051.001"]</b>,
-),
-
-# <b>40</b> techniques across 6 categories.
-# NIST AI RMF is referenced for MEASURE-function
-# coverage, not as a per-technique field.</pre>
-            </div>
-          </details>
-          The whole thing runs in GitHub Actions and gates on critical findings.
-        </div>
-
-        <div class="p">
-          The committed run is <span class="q">1,824</span> attack executions across seven
-          targets. Three of those sit on the same Bedrock base model, which is what makes
-          the guardrail comparison worth anything — same model, same prompts, matched by
-          technique, so the only variable left is the guardrail.<details class="prov">
-            <summary>attack_log.jsonl</summary>
-            <div class="prov__panel">
-              <div class="prov__head">
-                <span>red-team-simulator / results/attack_log.jsonl</span>
-                <a href="https://github.com/cyber-griffith/red-team-simulator/blob/main/results/attack_log.jsonl" target="_blank" rel="noopener">open on GitHub ↗</a>
-              </div>
-<pre class="prov__code">$ wc -l results/attack_log.jsonl
-<b>1824</b> results/attack_log.jsonl
-
-targets on the same Bedrock base model:
-  bedrock              461 executions
-  bedrock-guardrails   461 executions
-  bedrock-nemo         201 executions
-
-matched on (technique_id, attack_prompt):
-  bedrock → guardrails   n=<b>451</b>   46 → 11
-  bedrock → nemo         n=<b>201</b>   23 →  2</pre>
-              <p class="prov__say">Every row carries the prompt, the model's full response,
-              and the judge's verdict with its reasoning — so a reader can disagree with a
-              specific call instead of taking the score on faith.</p>
-            </div>
-          </details>
-        </div>
-
-        <div class="p">
-          Paired, that's <span class="q">+7.8 points</span> of block rate for Bedrock
-          Guardrails and <span class="q">+10.4 points</span> for NVIDIA NeMo Guardrails. An
-          unpaired target-level comparison gives a slightly different figure and is also
-          correct, but pairing is the stronger claim because it controls for which attacks
-          each target actually saw.
-        </div>
-
-        <dl class="proj__spec">
-          <div><dt>Stack</dt> <dd>&nbsp;Python · multi-agent orchestration · Bedrock · Azure OpenAI · GitHub Actions</dd></div>
-          <div><dt>Live</dt> <dd>&nbsp;<a href="https://cyber-griffith.github.io/red-team-simulator/" target="_blank" rel="noopener">cyber-griffith.github.io/red-team-simulator ↗</a></dd></div>
-        </dl>
-      </div>
-
-      <div>
-        <figure class="figure rgb hud">
-          <figcaption class="figure__head">Fig. 2 — Same model, same attacks, guardrail on/off</figcaption>
-          <div class="figure__body">
-            <div class="pair">
-
-              <svg viewBox="0 0 340 150" role="img" aria-labelledby="ch1t ch1d">
-                <title id="ch1t">Bedrock Guardrails, paired comparison</title>
-                <desc id="ch1d">Attack success falls from 10.2 percent bare to 2.4 percent with Bedrock Guardrails, across 451 matched attacks.</desc>
-                <line class="ch-grid" x1="32" y1="22" x2="320" y2="22"/>
-                <line class="ch-grid" x1="32" y1="52" x2="320" y2="52"/>
-                <line class="ch-grid" x1="32" y1="82" x2="320" y2="82"/>
-                <line class="ch-axis" x1="32" y1="112" x2="320" y2="112"/>
-                <line class="ch-axis" x1="32" y1="22"  x2="32"  y2="112"/>
-                <text class="ch-tick" x="26" y="25"  text-anchor="end">12</text>
-                <text class="ch-tick" x="26" y="55"  text-anchor="end">8</text>
-                <text class="ch-tick" x="26" y="85"  text-anchor="end">4</text>
-                <text class="ch-tick" x="26" y="115" text-anchor="end">0</text>
-                <line class="ch-line" x1="105" y1="35.5" x2="250" y2="94"/>
-                <circle class="ch-dot-a" cx="105" cy="35.5" r="4"/>
-                <circle class="ch-dot-b" cx="250" cy="94"   r="4"/>
-                <text class="ch-val ch-val-a" x="97"  y="39.5" text-anchor="end">10.2%</text>
-                <text class="ch-val ch-val-b" x="258" y="98"   text-anchor="start">2.4%</text>
-                <text class="ch-foot" x="105" y="128" text-anchor="middle">bare</text>
-                <text class="ch-foot" x="250" y="128" text-anchor="middle">Bedrock Guardrails</text>
-                <text class="ch-note" x="32"  y="145" text-anchor="start">n = 451 matched · +7.8 pts blocked</text>
-              </svg>
-
-              <svg viewBox="0 0 340 150" role="img" aria-labelledby="ch2t ch2d">
-                <title id="ch2t">NVIDIA NeMo Guardrails, paired comparison</title>
-                <desc id="ch2d">Attack success falls from 11.4 percent bare to 1.0 percent with NeMo Guardrails, across 201 matched attacks.</desc>
-                <line class="ch-grid" x1="32" y1="22" x2="320" y2="22"/>
-                <line class="ch-grid" x1="32" y1="52" x2="320" y2="52"/>
-                <line class="ch-grid" x1="32" y1="82" x2="320" y2="82"/>
-                <line class="ch-axis" x1="32" y1="112" x2="320" y2="112"/>
-                <line class="ch-axis" x1="32" y1="22"  x2="32"  y2="112"/>
-                <text class="ch-tick" x="26" y="25"  text-anchor="end">12</text>
-                <text class="ch-tick" x="26" y="55"  text-anchor="end">8</text>
-                <text class="ch-tick" x="26" y="85"  text-anchor="end">4</text>
-                <text class="ch-tick" x="26" y="115" text-anchor="end">0</text>
-                <line class="ch-line" x1="105" y1="26.5" x2="250" y2="104.5"/>
-                <circle class="ch-dot-a" cx="105" cy="26.5"  r="4"/>
-                <circle class="ch-dot-b" cx="250" cy="104.5" r="4"/>
-                <text class="ch-val ch-val-a" x="97"  y="30.5" text-anchor="end">11.4%</text>
-                <text class="ch-val ch-val-b" x="258" y="108.5" text-anchor="start">1.0%</text>
-                <text class="ch-foot" x="105" y="128" text-anchor="middle">bare</text>
-                <text class="ch-foot" x="250" y="128" text-anchor="middle">NeMo Guardrails</text>
-                <text class="ch-note" x="32"  y="145" text-anchor="start">n = 201 matched · +10.4 pts blocked</text>
-              </svg>
-
-            </div>
-          </div>
-          <figcaption>
-            Attack success rate, percent. Top: 46 of 451 matched attacks succeeded bare,
-            11 with Bedrock Guardrails. Bottom: 23 of 201 succeeded bare, 2 with NeMo.
-            Recomputed from <code>results/attack_log.jsonl</code>.
-          </figcaption>
-        </figure>
-
-        <div class="limit">
-          <span class="limit__lbl">Known failure mode</span>
-          <p>
-            This is one operator's taxonomy against a small set of targets — not an
-            industry benchmark, and not a general finding about guardrail products. The
-            techniques reflect what I thought to write down, which means the coverage has
-            my blind spots in it. Read it as a reproducible harness with a published run
-            attached, then re-run it against your own targets before believing anything
-            about yours.
-          </p>
-        </div>
-      </div>
-    </div>
-  </article>
-</section>
-
-<!-- ══ CURRENT WORK ══════════════════════════════════════════════════════ -->
-<section class="shell section" id="current">
-  <div class="section__head">
-    <span class="section__idx">02</span>
-    <h2 class="section__title">Current work</h2>
-    <span class="section__note">employer work &middot; no public artifacts</span>
   </div>
 
-  <div class="work__top">
+  <div class="block">
+    <div class="block__view">
+      <canvas id="world" tabindex="0" role="img" aria-label="A pixel-art neon street at night. Buildings along it lead to each part of this site. The list below has the same places as links."></canvas>
+      <p class="block__how"><span data-pix>Click to skate / drag to look / Enter to go in</span></p>
+    </div>
+    <div class="block__foot">
+      <div class="zonecard" aria-live="polite">
+        <h2 id="zoneTitle">Skate the block</h2>
+        <p id="zoneLine">Every building is a part of this site. Click anywhere on the street to ride there, drag to look around, or pick a spot.</p>
+        <a class="btn btn--main" id="zoneGo" href="#play" hidden>Go</a>
+      </div>
+      <ol class="zones" id="zones">
+        <li data-zone="story" data-x="188" data-w="330" data-c="yellow" data-cta="Read the story"><a href="#story"><b>The Dock</b><span>Where the run started: three years of engine rooms before any of this.</span></a></li>
+        <li data-zone="play" data-x="330" data-w="160" data-c="cyan" data-cta="Play the game"><a href="#play"><b>Agent Lab</b><span>Defend an AI agent from attacks. The odds come from my real test results.</span></a></li>
+        <li data-zone="loadout" data-x="565" data-w="150" data-c="violet" data-cta="Open the loadout"><a href="#loadout"><b>Workshop</b><span>The loadout: what I build, and what I build it with.</span></a></li>
+        <li data-zone="bosses" data-x="780" data-w="172" data-c="pink" data-cta="Fight the bosses"><a href="#bosses"><b>Boss Arena</b><span>Three projects I built on my own time, each with its weak spot.</span></a></li>
+        <li data-zone="certs" data-x="980" data-w="160" data-c="yellow" data-cta="See the trophies"><a href="#certs"><b>Trophy Hall</b><span>Nine certifications in two years.</span></a></li>
+        <li data-zone="music" data-x="1180" data-w="170" data-c="pink" data-cta="Go off the clock"><a href="#offclock"><b>The Stage</b><span>Every genre, no skips.</span></a></li>
+        <li data-zone="sports" data-x="1370" data-w="170" data-c="green" data-cta="Go off the clock"><a href="#offclock"><b>The Bowl</b><span>Skating, hoops, and whatever game is on.</span></a></li>
+        <li data-zone="arcade" data-x="1557" data-w="130" data-c="pink" data-cta="Find the cheat code"><a href="#offclock"><b>Arcade</b><span>The gaming room. There's a cheat code in here.</span></a></li>
+        <li data-zone="contact" data-x="1688" data-w="84" data-c="yellow" data-cta="Get in touch"><a href="#contact"><b>Player 2</b><span>Need a second player? This is how to reach me.</span></a></li>
+      </ol>
+    </div>
+  </div>
+</section>
+
+<!-- ══ AGENT LAB: THE GAME ═════════════════════════════════════════════════ -->
+<section class="blk blk--dark" id="play">
+  <i class="gem" data-gem="1" style="right:6%;top:14px" aria-hidden="true"></i>
+  <div class="wrap">
+    <div class="head">
+      <h2 data-pix>Defend the agent</h2>
+      <p>
+        Blue squares are normal requests. Pink diamonds are attacks. Run your cursor over
+        an attack to eat it, or switch on a defense and let it work. The odds on every
+        defense come from my own published test results.
+      </p>
+    </div>
+
+    <div class="game" id="game">
+      <div class="game__top">
+        <div class="game__hud" aria-live="off">
+          <span class="hearts" id="hearts" aria-label="Agent health"></span>
+          <span><b id="stServed">0</b> served</span>
+          <span><b id="stBlocked">0</b> blocked</span>
+          <span><b id="stEaten">0</b> eaten</span>
+          <span class="st--bad"><b id="stLeaked">0</b> got through</span>
+          <span><b id="stFalse">0</b> false alarms</span>
+        </div>
+        <div class="game__ctl">
+          <button class="sw sw--auto" type="button" id="swRules" role="switch" aria-checked="true"><span>Rules</span><i aria-hidden="true"></i></button>
+          <button class="sw sw--agent" type="button" id="swJudge" role="switch" aria-checked="false"><span>LLM judge</span><i aria-hidden="true"></i></button>
+          <div class="seg seg--sec" id="guardSel" role="radiogroup" aria-label="Guardrail">
+            <span>Guardrail</span>
+            <button type="button" role="radio" aria-checked="true" data-g="0">None</button>
+            <button type="button" role="radio" aria-checked="false" data-g="1">Bedrock</button>
+            <button type="button" role="radio" aria-checked="false" data-g="2">NeMo</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="game__board">
+        <svg id="board" viewBox="0 0 1080 380" role="img" aria-label="A winding track from an inbox, through three defense gates, to an AI agent. Requests and attacks travel along it.">
+          <defs>
+            <pattern id="hatch" width="8" height="8" patternUnits="userSpaceOnUse" patternTransform="rotate(45)"><path d="M0 0V8" stroke="#5d5d91" stroke-width="2.5"/></pattern>
+          </defs>
+          <path class="track" d="M70 80H900V190H180V300H1030"/>
+          <path class="track__mid" d="M70 80H900V190H180V300H1030"/>
+          <g id="marks"></g>
+
+          <g class="gate gate--ink">
+            <rect x="16" y="46" width="112" height="68" rx="10"/>
+            <text class="gate__n" x="72" y="78" text-anchor="middle">INBOX</text>
+            <text class="gate__s" x="72" y="99" text-anchor="middle">from anyone</text>
+          </g>
+          <g class="gate gate--auto" id="gRules" data-sw="rules">
+            <rect x="262" y="46" width="136" height="68" rx="10"/>
+            <rect class="gate__off" x="262" y="46" width="136" height="68" rx="10"/>
+            <text class="gate__n" x="330" y="78" text-anchor="middle">RULES</text>
+            <text class="gate__s" x="330" y="99" text-anchor="middle">instant filter</text>
+          </g>
+          <g class="gate gate--agent" id="gJudge" data-sw="judge">
+            <rect x="572" y="46" width="136" height="68" rx="10"/>
+            <rect class="gate__off" x="572" y="46" width="136" height="68" rx="10"/>
+            <text class="gate__n" x="640" y="78" text-anchor="middle">LLM JUDGE</text>
+            <text class="gate__s" x="640" y="99" text-anchor="middle">slower, smarter</text>
+          </g>
+          <g class="gate gate--sec" id="gGuard" data-sw="guard">
+            <rect x="468" y="156" width="144" height="68" rx="10"/>
+            <rect class="gate__off" x="468" y="156" width="144" height="68" rx="10"/>
+            <text class="gate__n" x="540" y="188" text-anchor="middle">GUARDRAIL</text>
+            <text class="gate__s" id="guardName" x="540" y="209" text-anchor="middle">none</text>
+          </g>
+          <g class="gate gate--me" id="gAgent">
+            <rect x="496" y="252" width="208" height="96" rx="12"/>
+            <g id="agentFace" transform="translate(508 274)"></g>
+            <text class="gate__n" x="634" y="296" text-anchor="middle">AGENT</text>
+            <text class="gate__s" x="634" y="318" text-anchor="middle">keep it alive</text>
+          </g>
+          <g class="gate gate--record">
+            <rect x="972" y="266" width="92" height="68" rx="10"/>
+            <text class="gate__n" x="1018" y="298" text-anchor="middle">DONE</text>
+            <text class="gate__s" x="1018" y="319" text-anchor="middle">served</text>
+          </g>
+          <g id="fx"></g>
+        </svg>
+        <div class="game__over" id="gameOver" hidden>
+          <p data-pix>Agent down</p>
+          <p id="overLine">It took three hits.</p>
+          <button class="btn btn--main" type="button" id="retry">Retry</button>
+        </div>
+      </div>
+
+      <p class="game__say" id="gameSay" aria-live="polite">Rules only: instant, but they catch about 1 attack in 6. A bare model shrugs off most of the rest.</p>
+      <p class="game__src">
+        It's an arcade version of real numbers: the Rules and Judge odds are from my
+        <a href="https://github.com/cyber-griffith/prompt-shield" target="_blank" rel="noopener">Prompt Shield</a> tests,
+        the guardrail odds from my
+        <a href="https://github.com/cyber-griffith/red-team-simulator" target="_blank" rel="noopener">red-team attack log</a>.
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- ══ LOADOUT ═════════════════════════════════════════════════════════════ -->
+<section class="blk blk--blue" id="loadout">
+  <i class="gem" data-gem="2" style="left:4%;bottom:70px" aria-hidden="true"></i>
+  <div class="wrap">
+    <div class="head">
+      <h2 data-pix>Loadout</h2>
+      <p>What I bring to a team. Pick a slot.</p>
+    </div>
+
+    <div class="inv">
+      <ul class="inv__grid" id="inv">
+        <li>
+          <button class="slot slot--agent" type="button" data-ico="bot" aria-pressed="true"><span>Agent builder</span></button>
+          <div class="slot__d">
+            <p class="slot__k">Agents</p>
+            <p>I design AI agents that take real work off a queue: grounded in a knowledge base, able to use tools, with a human making the final call.</p>
+            <p class="slot__t">Claude API, Claude Code, Gemini Agent Designer, MCP, LangChain, multi-agent orchestration</p>
+          </div>
+        </li>
+        <li>
+          <button class="slot slot--auto" type="button" data-ico="gear" aria-pressed="false"><span>Automation engine</span></button>
+          <div class="slot__d">
+            <p class="slot__k">Automation</p>
+            <p>Rule engines, bots and scheduled pipelines that do the sorting and the busywork before a person has to.</p>
+            <p class="slot__t">Python, PowerShell, Go, Bash, GitHub Actions, GitLab CI, FastAPI</p>
+          </div>
+        </li>
+        <li>
+          <button class="slot slot--sec" type="button" data-ico="bug" aria-pressed="false"><span>Bug hunter</span></button>
+          <div class="slot__d">
+            <p class="slot__k">AI security testing</p>
+            <p>I test AI systems the way an attacker would, so the weak spots get found and fixed before anyone can use them. An independent judge scores every finding.</p>
+            <p class="slot__t">OWASP LLM Top 10, MITRE ATLAS, NIST AI RMF</p>
+          </div>
+        </li>
+        <li>
+          <button class="slot slot--sec" type="button" data-ico="shield" aria-pressed="false"><span>Injection shield</span></button>
+          <div class="slot__d">
+            <p class="slot__k">Agent security</p>
+            <p>Layered defenses that stop hostile prompts before they reach an agent or the tools it can use.</p>
+            <p class="slot__t">Prompt-injection detection, guardrail evaluation, Bedrock Guardrails, NeMo Guardrails</p>
+          </div>
+        </li>
+        <li>
+          <button class="slot slot--agent" type="button" data-ico="book" aria-pressed="false"><span>Retrieval engine</span></button>
+          <div class="slot__d">
+            <p class="slot__k">RAG</p>
+            <p>Search that answers with citations, plus the tests that check it found the right thing.</p>
+            <p class="slot__t">Hybrid retrieval, embeddings, reranking, ChromaDB, SQLite FTS5</p>
+          </div>
+        </li>
+        <li>
+          <button class="slot slot--record" type="button" data-ico="check" aria-pressed="false"><span>Eval kit</span></button>
+          <div class="slot__d">
+            <p class="slot__k">Testing</p>
+            <p>Held-out test sets, calibrated LLM judges and real significance tests. Numbers I'll defend.</p>
+            <p class="slot__t">Benchmark design, LLM-as-judge, negative controls, ablations</p>
+          </div>
+        </li>
+        <li>
+          <button class="slot slot--record" type="button" data-ico="chart" aria-pressed="false"><span>Live dashboards</span></button>
+          <div class="slot__d">
+            <p class="slot__k">Reporting</p>
+            <p>Boards that read straight from the API, so nobody builds the report by hand.</p>
+            <p class="slot__t">React, Vite, SQL, REST APIs, Looker Studio</p>
+          </div>
+        </li>
+        <li>
+          <button class="slot slot--agent" type="button" data-ico="scroll" aria-pressed="false"><span>Knowledge base</span></button>
+          <div class="slot__d">
+            <p class="slot__k">Docs</p>
+            <p>Docs, playbooks and decision trees that both the agents and the humans can answer from.</p>
+            <p class="slot__t">Grounding, knowledge-base design, technical writing</p>
+          </div>
+        </li>
+        <li>
+          <button class="slot slot--ink" type="button" data-ico="cloud" aria-pressed="false"><span>Cloud and ops</span></button>
+          <div class="slot__d">
+            <p class="slot__k">Infrastructure</p>
+            <p>Where all of it runs, and how it stays patched and watched.</p>
+            <p class="slot__t">Google Cloud, AWS, Azure, Docker, CrowdStrike Falcon, vSphere, Intune, Palo Alto</p>
+          </div>
+        </li>
+      </ul>
+      <div class="inv__panel" id="invPanel" aria-live="polite"></div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ BOSS FIGHTS ═════════════════════════════════════════════════════════ -->
+<section class="blk blk--dark" id="bosses">
+  <i class="gem" data-gem="3" style="right:5%;top:16px" aria-hidden="true"></i>
+  <i class="gem" data-gem="4" style="left:3%;bottom:12px" aria-hidden="true"></i>
+  <div class="wrap">
+    <div class="head">
+      <h2 data-pix>Boss fights</h2>
+      <p>
+        Three things I built on my own time. All public, all measured, and each one comes
+        with the weak spot I found in it.
+      </p>
+    </div>
+
+    <article class="boss boss--wide">
+      <div class="boss__copy">
+        <h3>Red Team Attack Simulator</h3>
+        <p>
+          A security testing harness. It runs 40 known attack techniques against an AI
+          model to measure how well its defenses hold, and an independent judge decides
+          what counts as a hit.
+        </p>
+        <p class="weak"><b>Weak spot</b> One person's test list against a handful of targets.
+          It's not a benchmark. Run it on your own models before you trust it on yours.</p>
+        <p class="links">
+          <a href="https://github.com/cyber-griffith/red-team-simulator" target="_blank" rel="noopener">Repo</a>
+          <a href="https://cyber-griffith.github.io/red-team-simulator/" target="_blank" rel="noopener">Live dashboard</a>
+          <a href="https://github.com/cyber-griffith/red-team-simulator/blob/main/results/attack_log.jsonl" target="_blank" rel="noopener">The attack log</a>
+        </p>
+      </div>
+
+      <div class="boss__panel">
+        <div class="manifold" id="manifold" role="radiogroup" aria-label="Pick a target">
+          <button type="button" role="radio" aria-checked="true" data-target="-1">All targets</button>
+          <button type="button" role="radio" aria-checked="false" data-target="0">Bedrock, bare</button>
+          <button type="button" role="radio" aria-checked="false" data-target="1">+ Bedrock Guardrails</button>
+          <button type="button" role="radio" aria-checked="false" data-target="2">+ NeMo Guardrails</button>
+          <button type="button" role="radio" aria-checked="false" data-target="3">Claude</button>
+          <button type="button" role="radio" aria-checked="false" data-target="4">Azure OpenAI</button>
+          <button type="button" role="radio" aria-checked="false" data-target="5">Aria</button>
+          <button type="button" role="radio" aria-checked="false" data-target="6">Firewall</button>
+        </div>
+
+        <p class="rt__read" aria-live="polite">
+          <span><b id="rtN">1,824</b> attacks</span>
+          <span><b id="rtHit">78</b> got through</span>
+          <span><b id="rtRate">4.3%</b> hit rate</span>
+        </p>
+
+        <div class="field">
+          <canvas id="attackField" role="img"
+            aria-label="A grid of 1,824 marks, one per attack in the log, grouped by target. The 78 bright marks are attacks that got through; the rest were blocked."></canvas>
+          <div class="field__tip" id="fieldTip" role="status"></div>
+        </div>
+        <p class="hint">Every square is one real attack from the log. Bright ones got through. Point at or tap one.</p>
+      </div>
+    </article>
+
+    <div class="duo">
+      <article class="boss" data-selector>
+        <h3>Prompt Shield</h3>
+        <p>
+          Catches prompt injection in two tiers: instant rules first, then an LLM judge for
+          anything the rules can't settle.
+        </p>
+
+        <div class="seg" role="radiogroup" aria-label="Prompt Shield setup">
+          <button type="button" role="radio" aria-checked="true" data-pos="0">Rules only</button>
+          <button type="button" role="radio" aria-checked="false" data-pos="1">Rules + judge</button>
+        </div>
+
+        <div class="glasses" data-pos="0">
+          <div class="glass">
+            <span class="glass__k">Attacks caught</span>
+            <span class="glass__tube"><i data-w="16.2,62"></i></span>
+            <span class="glass__v reading"><span data-pos="0">16.2%</span><span data-pos="1">about 62%</span></span>
+          </div>
+          <div class="glass">
+            <span class="glass__k">Precision</span>
+            <span class="glass__tube"><i data-w="92,96.3"></i></span>
+            <span class="glass__v reading"><span data-pos="0">92.0%</span><span data-pos="1">about 96%</span></span>
+          </div>
+          <div class="glass glass--text">
+            <span class="glass__k">Wait per prompt</span>
+            <span class="glass__v reading"><span data-pos="0">under 1 ms</span><span data-pos="1">about 1.5 s</span></span>
+          </div>
+        </div>
+
+        <p class="say reading">
+          <span data-pos="0">Fast and nearly blind. Rules alone miss five attacks in six.</span>
+          <span data-pos="1">Nearly four times the catches, and precision goes up too. The price is the wait.</span>
+        </p>
+        <p class="weak"><b>Weak spot</b> If the judge model refuses to even look at an attack,
+          the prompt drops back to the weak rules. That happened 81 times in 746.</p>
+        <p class="links">
+          <a href="https://github.com/cyber-griffith/prompt-shield" target="_blank" rel="noopener">Repo</a>
+          <a href="https://github.com/cyber-griffith/prompt-shield/tree/main/eval" target="_blank" rel="noopener">Test set</a>
+        </p>
+      </article>
+
+      <article class="boss" data-selector>
+        <h3>Security Intelligence RAG</h3>
+        <p>
+          Ask it about any of 358,170 known vulnerabilities and it answers with citations,
+          including which ones are actually being exploited.
+        </p>
+
+        <div class="seg" role="radiogroup" aria-label="What to measure">
+          <button type="button" role="radio" aria-checked="true" data-pos="0">Did it cite its sources?</button>
+          <button type="button" role="radio" aria-checked="false" data-pos="1">Right vulnerability?</button>
+        </div>
+
+        <div class="glasses" data-pos="0">
+          <div class="glass glass--big">
+            <span class="glass__k reading"><span data-pos="0">Answers backed by what it cited</span><span data-pos="1">Questions where it found the right record</span></span>
+            <span class="glass__tube"><i data-w="99.3,78.2"></i></span>
+            <span class="glass__v reading"><span data-pos="0">141 of 142</span><span data-pos="1">111 of 142</span></span>
+          </div>
+        </div>
+
+        <p class="say reading">
+          <span data-pos="0">On 142 test questions it never invented a vulnerability and never dodged one it could answer.</span>
+          <span data-pos="1">Same 142 questions. A well-cited answer isn't always about the right thing.</span>
+        </p>
+        <p class="weak"><b>Weak spot</b> It can give a confident, perfectly cited answer about
+          the wrong vulnerability, and nothing about it looks wrong.</p>
+        <p class="links">
+          <a href="https://github.com/cyber-griffith/security-intel-rag" target="_blank" rel="noopener">Repo</a>
+          <a href="https://github.com/cyber-griffith/security-intel-rag/blob/master/experiments/results/config_decision.json" target="_blank" rel="noopener">Results file</a>
+        </p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ══ STORY ═══════════════════════════════════════════════════════════════ -->
+<section class="blk blk--violet" id="story">
+  <i class="gem" data-gem="5" style="right:7%;bottom:60px" aria-hidden="true"></i>
+  <div class="wrap">
+    <div class="head">
+      <h2 data-pix>Story mode</h2>
+      <p>
+        I spent three years keeping diesel engines alive at sea. When I got out I went
+        all in on tech: school full time, then a sysadmin job, then AI. Engine room to AI
+        in 26 months.
+      </p>
+    </div>
+
+    <ol class="run">
+      <li>
+        <span class="run__lv">Level 1 <i>3 years</i></span>
+        <h3>Engine room</h3>
+        <p class="run__org">Engineman, U.S. Navy</p>
+        <p>Diesel engines, at sea. It's where I picked up the habit behind everything I
+          build: log it, and verify before you sign.</p>
+      </li>
+      <li>
+        <span class="run__lv">Level 2 <i>2025</i></span>
+        <h3>Respec</h3>
+        <p class="run__org">Full-time cybersecurity student</p>
+        <p>Out of uniform and every point into security. Security+ and CySA+ inside
+          five months.</p>
+      </li>
+      <li>
+        <span class="run__lv">Level 3 <i>2025 to 2026</i></span>
+        <h3>SysAdmin</h3>
+        <p class="run__org">System Administrator, healthcare</p>
+        <p>Ran endpoint security for a lab network and scripted away the repetitive parts.</p>
+      </li>
+      <li class="run--now">
+        <span class="run__lv">Level 4 <i>2026 to now</i></span>
+        <h3>AI engineer</h3>
+        <p class="run__org">Generative AI platform, defense</p>
+        <p>Building AI agents and automation, and learning where they break.</p>
+      </li>
+      <li class="run--side">
+        <span class="run__lv">Side quest <i>in progress</i></span>
+        <h3>B.S. Computer Science, AI</h3>
+        <p class="run__org">Full Sail University, expected 2028</p>
+        <p>Running in the background while I work full time.</p>
+      </li>
+    </ol>
+
+    <ul class="rules" aria-label="How I work">
+      <li><b>Log everything.</b> Verify before you sign.</li>
+      <li><b>Test on what it's never seen.</b> Anything else is practice mode.</li>
+      <li><b>Post the weak spots</b> next to the wins.</li>
+    </ul>
+  </div>
+</section>
+
+<!-- ══ ACHIEVEMENTS ════════════════════════════════════════════════════════ -->
+<section class="blk blk--dark" id="certs">
+  <i class="gem" data-gem="6" style="right:10%;top:16px" aria-hidden="true"></i>
+  <div class="wrap">
+    <div class="head">
+      <h2 data-pix>Achievements unlocked</h2>
+      <p>Nine certifications in two years. All verifiable on
+        <a href="https://www.credly.com/users/joyelle-griffith" target="_blank" rel="noopener">Credly</a>.</p>
+    </div>
+
+    <ul class="trophies">
+      <li><b>CAISP</b><span>Certified AI Security Professional · 2026</span></li>
+      <li><b>SecAI+</b><span>CompTIA · 2026</span></li>
+      <li><b>AI Agent Security Specialist</b><span>Proofpoint · 2026</span></li>
+      <li><b>AI Data Security Specialist</b><span>Proofpoint · 2026</span></li>
+      <li><b>Azure AI Engineer</b><span>Microsoft AI-102 · 2026</span></li>
+      <li><b>Azure AI Fundamentals</b><span>Microsoft AI-900 · 2026</span></li>
+      <li><b>CySA+</b><span>CompTIA · 2025</span></li>
+      <li><b>Security+</b><span>CompTIA · 2025</span></li>
+      <li><b>Linux Essentials</b><span>LPI · 2025</span></li>
+    </ul>
+  </div>
+</section>
+
+<!-- ══ OFF THE CLOCK ═══════════════════════════════════════════════════════ -->
+<section class="blk blk--dark blk--off" id="offclock">
+  <i class="gem" data-gem="7" style="right:8%;bottom:18px" aria-hidden="true"></i>
+  <div class="wrap">
+    <div class="head">
+      <h2 data-pix>Off the clock</h2>
+      <p>There's usually a game on, something playing, or a controller in my hand.</p>
+    </div>
+
+    <div class="off">
+      <article class="off__card off--sports">
+        <h3>Always got a game on</h3>
+        <p>If someone's competing, I'm probably watching.</p>
+        <div class="board" aria-live="polite">
+          <span class="board__live">Live</span>
+          <span class="board__now" id="boardNow">Basketball</span>
+        </div>
+        <div class="chips" id="sports" role="radiogroup" aria-label="Sport"></div>
+      </article>
+
+      <article class="off__card off--music">
+        <h3>Every genre, no skips</h3>
+        <p>Metal to country to pop to rap, and whatever comes on next.</p>
+        <div class="eq" id="eq" aria-hidden="true"></div>
+        <div class="chips" id="genres" role="radiogroup" aria-label="Genre"></div>
+      </article>
+
+      <article class="off__card off--game">
+        <h3>Huge gamer</h3>
+        <p>You probably guessed. This site has achievements, and one of them wants a cheat code.</p>
+        <div class="pad" id="pad" role="group" aria-label="Controller">
+          <div class="pad__d">
+            <button type="button" data-k="ArrowUp" aria-label="Up"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5l8 12H4z"/></svg></button>
+            <button type="button" data-k="ArrowLeft" aria-label="Left"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12l12-8v16z"/></svg></button>
+            <button type="button" data-k="ArrowRight" aria-label="Right"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M19 12L7 4v16z"/></svg></button>
+            <button type="button" data-k="ArrowDown" aria-label="Down"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 19L4 7h16z"/></svg></button>
+          </div>
+          <div class="pad__ab">
+            <button type="button" data-k="b">B</button>
+            <button type="button" data-k="a">A</button>
+          </div>
+        </div>
+        <p class="pad__dots" id="padDots" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></p>
+        <p class="pad__msg" id="padMsg" role="status">Ten inputs. Keyboard works too.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ══ CONTACT ═════════════════════════════════════════════════════════════ -->
+<section class="blk blk--grad" id="contact">
+  <i class="gem" data-gem="8" style="right:6%;top:14px" aria-hidden="true"></i>
+  <div class="wrap contact">
     <div>
-      <div class="lede">
-        The projects above are the security half. The day job is the automation half:
-        supporting GenAI.mil, the Department of Defense's enterprise generative AI
-        platform, and steadily replacing the manual parts of that support with things that
-        run on their own.
-      </div>
-      <div class="lede" style="margin-top:16px">
-        Nothing in this section links to an artifact, because none of it is mine to
-        publish. It's marked that way on purpose rather than quietly mixed in with the
-        figures above.<details class="prov prov--internal">
-          <summary>internal</summary>
-          <div class="prov__panel">
-            <div class="prov__head">
-              <span>provenance state: internal — not publicly verifiable</span>
-            </div>
-            <p class="prov__say">Employer work on a government platform. The code,
-            dashboards, and ticket volumes live inside systems I can't link to, so figures
-            here are stated as reported internally and carry no artifact link. The
-            distinction is the point: everything in section 01 can be checked by a
-            stranger, and nothing in section 02 can. Presenting both the same way would
-            undermine the first.</p>
-          </div>
-        </details>
+      <h2 data-pix>Need a player two? Press start.</h2>
+      <div class="mail">
+        <a href="mailto:cybergriffith@gmail.com" id="mailLink">cybergriffith@gmail.com</a>
+        <button type="button" id="copyMail" class="copy">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 3h11a2 2 0 0 1 2 2v12h-2V5H8zM5 7h10a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V9a2 2 0 0 1 2-2zm0 2v10h10V9z"/></svg>
+          <span id="copyLabel">Copy address</span>
+        </button>
       </div>
     </div>
 
-    <div class="rolecard">
-      <p class="rolecard__role">GenAI Platform Support Engineer</p>
-      <p class="rolecard__org">Game Plan Tech (GridIron) · 2026 – present</p>
-      <dl class="rolecard__dl">
-        <dt>Platform</dt><dd>GenAI.mil — DoD enterprise generative AI</dd>
-        <dt>Scale</dt><dd>The platform serves 1.6M+ users; I'm one of six engineers on the support team</dd>
-        <dt>Work</dt><dd>Tier 1 support, onboarding, access management, LLM workflow integration — plus the automation that shrinks all four</dd>
-      </dl>
-    </div>
+    <dl class="card">
+      <div><dt>Class</dt><dd>Agentic AI &amp; Automation Engineer</dd></div>
+      <div><dt>Spec</dt><dd>AI and agent security</dd></div>
+      <div><dt>Clearance</dt><dd>Active Secret</dd></div>
+      <div><dt>Open to</dt><dd>Agentic AI, automation and AI security roles</dd></div>
+      <div><dt>GitHub</dt><dd><a href="https://github.com/cyber-griffith" target="_blank" rel="noopener">cyber-griffith</a></dd></div>
+      <div><dt>LinkedIn</dt><dd><a href="https://www.linkedin.com/in/jace-griffith-jg11/" target="_blank" rel="noopener">jace-griffith-jg11</a></dd></div>
+    </dl>
   </div>
-
-  <div class="buildgrid">
-    <div class="build">
-      <span class="build__tag">Agent</span>
-      <h3 class="build__title">Tier 0 support agent</h3>
-      <p>
-        Takes the repetitive front of the queue — the questions that have one correct
-        answer and don't need a person to find it — so engineers see the tickets that
-        actually need judgment.
-      </p>
-    </div>
-
-    <div class="build">
-      <span class="build__tag">Pipeline</span>
-      <h3 class="build__title">Cron triage pipeline</h3>
-      <p>
-        A Python job that classifies and routes incoming issues on a schedule. Triage was
-        the step where queue time went to die; moving it off the humans moved the backlog.
-      </p>
-    </div>
-
-    <div class="build">
-      <span class="build__tag">Roadmap</span>
-      <h3 class="build__title">45-item automation backlog</h3>
-      <p>
-        Every manual step in the support workflow, written down and ranked by how often it
-        costs someone an hour. A boring artifact that makes the next six months of work
-        obvious.
-      </p>
-    </div>
-
-    <div class="build">
-      <span class="build__tag">Reporting</span>
-      <h3 class="build__title">GitLab REST API dashboards</h3>
-      <p>
-        Pulls issue, milestone, and throughput data straight from the API, instead of
-        someone exporting spreadsheets by hand every Friday.
-      </p>
-    </div>
-
-    <div class="build">
-      <span class="build__tag">Analytics</span>
-      <h3 class="build__title">32-chart Insights board</h3>
-      <p>
-        The standing view of support health — volume, categories, resolution time —
-        assembled once, so leadership stops asking for it one question at a time.
-      </p>
-    </div>
-
-    <div class="build">
-      <span class="build__tag">Front end</span>
-      <h3 class="build__title">React / Vite tracker on Vercel</h3>
-      <p>
-        A tracker the team actually opens, plus a Looker Studio pipeline feeding the
-        recurring reporting. Automation nobody uses isn't automation.
-      </p>
-    </div>
-  </div>
-</section>
-
-<!-- ══ BACKGROUND ════════════════════════════════════════════════════════ -->
-<section class="shell section" id="background">
-  <div class="section__head">
-    <span class="section__idx">03</span>
-    <h2 class="section__title">Background</h2>
-    <span class="section__note">employment &middot; service &middot; certifications</span>
-  </div>
-
-  <div class="bg__grid">
-    <figure class="portrait">
-      <img src="profile.jpg" alt="Jace Griffith" width="400" height="400">
-      <figcaption>Jace Griffith<br>Uncasville, CT</figcaption>
-    </figure>
-
-    <div>
-      <div class="timeline">
-        <div class="tl">
-          <p class="tl__when">2026 — present</p>
-          <p class="tl__what">GenAI Platform Support Engineer</p>
-          <p class="tl__org">Game Plan Tech (GridIron)</p>
-          <p class="tl__desc">GenAI.mil platform support and support automation. Detailed in section 02.</p>
-        </div>
-
-        <div class="tl">
-          <p class="tl__when">2025 — 2026</p>
-          <p class="tl__what">System Administrator</p>
-          <p class="tl__org">PathGroup</p>
-          <p class="tl__desc">
-            Primary CrowdStrike Falcon administrator across 100+ workstations and 30+
-            servers in a HIPAA environment. VMware vSphere, Palo Alto firewalls, Intune
-            MDM, Sumo Logic SIEM, Exchange Online — and the PowerShell that held the
-            recurring work together.
-          </p>
-        </div>
-
-        <div class="tl">
-          <p class="tl__when">2020 — 2024</p>
-          <p class="tl__what">Engineman</p>
-          <p class="tl__org">United States Navy</p>
-          <p class="tl__desc">
-            Diesel propulsion systems on naval vessels. Four years somewhere a maintenance
-            log is a legal document taught me more about writing down what you actually
-            measured than any course since.
-          </p>
-        </div>
-
-        <div class="tl">
-          <p class="tl__when">In progress</p>
-          <p class="tl__what">B.S. Computer Science, AI concentration</p>
-          <p class="tl__org">Full Sail University</p>
-          <p class="tl__desc">Coursework alongside full-time work.</p>
-        </div>
-      </div>
-
-      <div class="certs">
-        <div class="cert">
-          <p class="cert__name">CompTIA SecAI+</p>
-          <p class="cert__meta">AI security · Apr 2026</p>
-        </div>
-        <div class="cert">
-          <p class="cert__name">AI Agent Security Specialist</p>
-          <p class="cert__meta">Proofpoint · Mar 2026</p>
-        </div>
-        <div class="cert">
-          <p class="cert__name">Azure AI Engineer — AI-102</p>
-          <p class="cert__meta">Microsoft · valid to 2027</p>
-        </div>
-        <div class="cert">
-          <p class="cert__name">CompTIA CySA+</p>
-          <p class="cert__meta">valid to 2028</p>
-        </div>
-        <div class="cert">
-          <p class="cert__name">CompTIA Security+</p>
-          <p class="cert__meta">valid to 2028</p>
-        </div>
-        <div class="cert">
-          <p class="cert__name">Azure AI Fundamentals — AI-900</p>
-          <p class="cert__meta">Microsoft · Jan 2026</p>
-        </div>
-        <div class="cert">
-          <p class="cert__name">LPI Linux Essentials</p>
-          <p class="cert__meta">no expiry</p>
-        </div>
-        <div class="cert cert--wip">
-          <p class="cert__name">Verify any of these</p>
-          <p class="cert__meta"><a href="https://www.credly.com/users/joyelle-griffith" target="_blank" rel="noopener">credly.com ↗</a></p>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ══ CONTACT ═══════════════════════════════════════════════════════════ -->
-<section class="shell section" id="contact">
-  <div class="section__head">
-    <span class="section__idx">04</span>
-    <h2 class="section__title">Contact</h2>
-    <span class="section__note">open to AI security &amp; automation roles</span>
-  </div>
-
-  <div class="contact__grid">
-    <p class="lede">
-      Email is the fastest route and it reaches me directly. There's no contact form on
-      this page on purpose — on a static site a form either quietly fails or hands your
-      message to a third party, and neither is worth the two seconds it saves you.
-    </p>
-
-    <div class="channels">
-      <a class="channel" href="mailto:cybergriffith@gmail.com">
-        <span class="channel__k">Email</span>
-        <span class="channel__v">cybergriffith@gmail.com</span>
-      </a>
-      <a class="channel" href="https://github.com/cyber-griffith" target="_blank" rel="noopener">
-        <span class="channel__k">GitHub</span>
-        <span class="channel__v">github.com/cyber-griffith</span>
-      </a>
-      <a class="channel" href="https://www.linkedin.com/in/jace-griffith-jg11/" target="_blank" rel="noopener">
-        <span class="channel__k">LinkedIn</span>
-        <span class="channel__v">in/jace-griffith-jg11</span>
-      </a>
-      <a class="channel" href="https://www.credly.com/users/joyelle-griffith" target="_blank" rel="noopener">
-        <span class="channel__k">Credly</span>
-        <span class="channel__v">Verify certifications</span>
-      </a>
-    </div>
-  </div>
+  <p class="foot">© 2026 Jace Griffith. Hand-built HTML, CSS and JavaScript, pixel by pixel. No framework, no tracking.</p>
 </section>
 
 </main>
 
-<footer class="colophon">
-  <div class="shell colophon__in">
-    <span>© 2026 Jace Griffith</span>
-    <span>Every figure links to the artifact that produced it.</span>
-    <span>Hand-written HTML &amp; CSS · no framework · no tracking</span>
-  </div>
-</footer>
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+<div class="sprite" id="sprite" aria-hidden="true"></div>
 
-<script src="field-data.js?v=9" defer></script>
-<script src="app.js?v=9" defer></script>
+<script src="pix.js?v=54" defer></script>
+<script src="me.js?v=54" defer></script>
+<script src="field-data.js?v=54" defer></script>
+<script src="world.js?v=54" defer></script>
+<script src="app.js?v=54" defer></script>
 </body>
 </html>
